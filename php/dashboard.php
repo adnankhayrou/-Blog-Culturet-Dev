@@ -5,38 +5,9 @@ include 'navbar.php';
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
-        <!-- ***********side bar************ -->
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark position-fixed d-none d-lg-block">
-            <div class=" d-flex flex-column align-items-center align-items-sm-start my-5 px-3 pt-2 text-white vh-100">
-               
-                    <span class="fs-4 d-none d-sm-inline my-3">Welcome<br></span>
-                
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start pt-4" id="menu">
-                    
-                    <li >
-                        <a href="dashboard.php" class="nav-link px-0 align-middle ">
-                        <i class="fa-solid fa-gauge text-light"></i> <span class="ms-1 d-none d-sm-inline text-light ">Dashboard</span> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="statistics.php" class="nav-link align-middle px-0">
-                        <i class="fa-solid fa-chart-pie text-light"></i> <span class="ms-1 d-none d-sm-inline text-light">Statistics</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                        <i class="fa-solid fa-user text-light"></i> <span class="ms-1 d-none d-sm-inline text-light">Profile</span> </a>
-                    </li>
-                    <li>
-                        <a href="login.php" class="nav-link px-0 align-middle">
-                        <i class="fa-solid fa-right-from-bracket text-light"></i> <span class="ms-1 d-none d-sm-inline text-light">Sign out</span> </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
          <!-- NAVBAR  -->
          <nav class="navbar fixed-top d-lg-none " id="color">
   <div class="container-fluid" >
-    <!-- <a class="navbar-brand text-light" href="#">Offcanvas navbar</a> -->
     <a href="landingpage.php" class="text-light text-decoration-none"></a>
     <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon text-dark"></span>
@@ -65,19 +36,19 @@ include 'navbar.php';
                         <div class="row ">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1 mt-4 d-flex justify-content-center" id="statistiques">Statistiques</h2>
+                                    <h2 class="title-1 mt-5 d-flex justify-content-center" id="statistiques">Statistiques</h2>
                                 </div>
                             </div>
                         </div>
-                        <div class="row m-t-25 d-flex justify-content-center">
+                        <div class="row m-t-25 mt-2 d-flex justify-content-center">
                             <div class="col-sm-10 col-lg-3 bg-black rounded me-2 mb-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
-                                           
                                             <div class="text-light">
-                                                <h2>test</h2>
-                                                <span>2</span>
+                                                <i class="fa fa-users fs-2 mt-3 text-white me-2"></i>
+                                                <span class="fs-1 ">2</span>
+                                                <h2>Admins</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -87,10 +58,10 @@ include 'navbar.php';
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
-                                           
                                             <div class="text-light">
-                                                <h2>tset</h2>
-                                                <span>7</span>
+                                                <i class="fa-solid fa-chart-pie fs-2 mt-3 text-white me-2"></i>
+                                                <span class="fs-1">7</span>
+                                                <a href="category.php" class="text-decoration-none text-light"><h2>Categorys</h2></a href="category.php">
                                             </div>
                                         </div>
                                     </div>
@@ -100,29 +71,27 @@ include 'navbar.php';
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
-                                        
-                                            <div class="text-light">
-                                                <h2>test</h2>
-                                                <span>6</span>
+                                            <div class="text-light ">
+                                                <i class="fa-brands fa-microblog fs-1 mt-3 text-white me-2"></i>
+                                                <span class="fs-1 ">6</span>
+                                                <h2>Posts</h2>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-<!-- ***********table of all games******************* -->
         
         <!-- ***********title and add button*************** -->
         <div class="test col py-1">
 			     <div class="row">
-             <h3 class=" col-7 my-5 ms-1">all Posts</h3>
+             <h3 class=" col-7 mt-5 ms-1">all Posts</h3>
           <div class=" col text-end">
-		    <button class="  rounded text-light bg-black mx-2 my-5" href="#modal-task" data-bs-toggle="modal" type="button" >Add Post <i class="fa-solid fa-plus"></i></button>
+		    <button class="  rounded text-light bg-black mx-2 mt-5" href="#modal-task" data-bs-toggle="modal" type="button" >Add Post <i class="fa-solid fa-plus"></i></button>
          </div>
 			</div>
             
-      <!-- ***********table of all games******************* -->
+      <!-- ***********table of all posts******************* -->
      <div class=" text-center table-responsive" id="divTable">
            <table class="table">
               <thead class="bg-dark text-light">
@@ -144,7 +113,7 @@ include 'navbar.php';
       </div>
 
       </div>
-	<!-- add game form -->
+	<!-- add post form -->
 	<div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -182,7 +151,7 @@ include 'navbar.php';
 					</div>
 					<div class="modal-footer">
 						<a href="#" class="btn btn-white border" data-bs-dismiss="modal" id="task-cancel-btn">Cancel</a>
-						<button type="submit" name="Add" class="btn btn-dark text-light task-action-btn" id="game-save-btn">Add Game</button>
+						<button type="submit" name="Add" class="btn btn-dark text-light task-action-btn" id="game-save-btn">Add Post</button>
 					</div>
 				</form>
 			</div>
