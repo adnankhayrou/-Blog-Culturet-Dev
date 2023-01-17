@@ -1,13 +1,7 @@
 <?php
-// include 'script.php';
 $title = 'Dashboard';
 include 'navbar.php';
-
-
-// if(!isset($_SESSION['name'])){
-//    header('location: login.php');
-// }
-// ?>
+?>
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
@@ -33,7 +27,7 @@ include 'navbar.php';
                         <i class="fa-solid fa-user text-light"></i> <span class="ms-1 d-none d-sm-inline text-light">Profile</span> </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle">
+                        <a href="login.php" class="nav-link px-0 align-middle">
                         <i class="fa-solid fa-right-from-bracket text-light"></i> <span class="ms-1 d-none d-sm-inline text-light">Sign out</span> </a>
                     </li>
                 </ul>
@@ -61,7 +55,7 @@ include 'navbar.php';
             <a class="nav-link active text-light" aria-current="page" href="#"><i class="fa fa-tachometer text-white me-2"></i>Statistics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
+            <a class="nav-link active text-light" aria-current="page" href="login.php"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
           </li>
       </div>
     </div>
@@ -70,7 +64,7 @@ include 'navbar.php';
         <!-- END OF NAVBAR -->
 
         <!-- Statistiques-->
-<div class="container position-relative w-75">
+<div class="container ">
 <div class="main-content pt-5 ">
                 <div class="section__content section__content ">
                     <div class="container-fluid" >
@@ -78,50 +72,10 @@ include 'navbar.php';
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1 mt-2" id="statistiques">Statistiques</h2>
-                                    <!-- <button class="au-btn au-btn-icon au-btn--blue rounded" id="color">
-                                        <i class="zmdi zmdi-plus"></i>add item</button> -->
                                 </div>
                             </div>
                         </div>
                         <div class="row m-t-25 ">
-                            <div class="col-sm-6 col-lg-4 bg-black rounded m-2" >
-                                <div class="overview-item overview-item--c1 " id="color">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="text-light">
-                                                <h2>test</h2>
-                                                <span>4</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 bg-black rounded m-2">
-                                <div class="overview-item overview-item--c1" id="color">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            
-                                            <div class="text-light">
-                                                <h2>test</h2>
-                                                <span>5</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 bg-black rounded m-2">
-                                <div class="overview-item overview-item--c1" id="color">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                    
-                                            <div class="text-light">
-                                                <h2>test</h2>
-                                                <span>7</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-sm-6 col-lg-4 bg-black rounded m-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
@@ -180,10 +134,9 @@ include 'navbar.php';
               <thead class="bg-dark text-light">
                <tr>
                  <th scope="col">#</th>
-                 <th scope="col">Name</th>
-                 <th scope="col">Price</th>
-                 <th scope="col">Quantity</th>
-                 <th scope="col">Category</th>
+                 <th scope="col">title</th>
+                 <th scope="col">image</th>
+                 <th scope="col">Categorey</th>
                  <th scope="col">Description</th>
                  <th scope="col">Edit</th>
               </tr> 
@@ -210,18 +163,13 @@ include 'navbar.php';
 			
 							<input type="hidden" name="id" >
 							<div class="mb-3">
-								<label class="form-label">Name</label>
+								<label class="form-label">title</label>
 								<input type="text" name="Name" class="form-control" required/>
 							</div>
 
                             <div class="mb-3">
-								<label class="form-label">Price</label>
+								<label class="form-label">image</label>
 								<input type="Number" name="Price" class="form-control" step="any" required/>
-							</div>
-							
-							<div class="mb-3">
-								<label class="form-label">Quantity</label>
-								<input type="number" name="Quantity" class="form-control" id="task-date" required/>
 							</div>
 							
                             <div class="mb-3">

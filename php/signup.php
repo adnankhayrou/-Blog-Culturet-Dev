@@ -1,5 +1,4 @@
 <?php
-// include 'script.php';
 $title = 'Login';
 include 'navbar.php';
 
@@ -7,7 +6,7 @@ include 'navbar.php';
 
 <!-- edit game form -->
 <div class="col-12 col-lg-4 col-md-6 mx-auto mt-5 p-2">
-    <form action="" method="POST" id="form-task" class="mt-5" >
+    <form action="../scripts/signup.script.php" method="POST" id="form-task" class="mt-5" >
     <div class="modal-header row">
 						<h5 class="modal-title mt-5 fs-3 text-center">REGISTER</h5>
 					</div>
@@ -25,7 +24,7 @@ include 'navbar.php';
        </div>
        <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Comnfirm Password</label>
-          <input type="password" name="Password" class="form-control" required/>
+          <input type="password" class="form-control" required/>
        </div>
         <div  class="text-center">
             <button type="submit" name="signup" class="btn btn-dark d-grid gap-2 col-6 mx-auto">sign Up</button>
