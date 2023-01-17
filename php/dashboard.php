@@ -49,12 +49,6 @@ include 'navbar.php';
       <div class="offcanvas-body bg-black" id="color">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#"><i class="fa fa-futbol-o text-white me-2"></i>Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#"><i class="fa fa-tachometer text-white me-2"></i>Statistics</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active text-light" aria-current="page" href="login.php"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
           </li>
       </div>
@@ -67,16 +61,16 @@ include 'navbar.php';
 <div class="container ">
 <div class="main-content pt-5 ">
                 <div class="section__content section__content ">
-                    <div class="container-fluid" >
-                        <div class="row">
+                    <div class="container-fluid " >
+                        <div class="row ">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1 mt-2" id="statistiques">Statistiques</h2>
+                                    <h2 class="title-1 mt-4 d-flex justify-content-center" id="statistiques">Statistiques</h2>
                                 </div>
                             </div>
                         </div>
-                        <div class="row m-t-25 ">
-                            <div class="col-sm-6 col-lg-4 bg-black rounded m-2">
+                        <div class="row m-t-25 d-flex justify-content-center">
+                            <div class="col-sm-10 col-lg-3 bg-black rounded me-2 mb-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -89,7 +83,7 @@ include 'navbar.php';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-4 bg-black rounded m-2">
+                            <div class="col-sm-10 col-lg-3 bg-black rounded me-2 mb-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -102,7 +96,7 @@ include 'navbar.php';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-4 bg-black rounded m-2">
+                            <div class="col-sm-10 col-lg-3 bg-black rounded me-2 mb-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -120,9 +114,9 @@ include 'navbar.php';
 <!-- ***********table of all games******************* -->
         
         <!-- ***********title and add button*************** -->
-        <div class="test col py-4">
+        <div class="test col py-1">
 			     <div class="row">
-             <h3 class=" text-end col-7 my-5">all Posts</h3>
+             <h3 class=" col-7 my-5 ms-1">all Posts</h3>
           <div class=" col text-end">
 		    <button class="  rounded text-light bg-black mx-2 my-5" href="#modal-task" data-bs-toggle="modal" type="button" >Add Post <i class="fa-solid fa-plus"></i></button>
          </div>
