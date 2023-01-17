@@ -1,4 +1,6 @@
 <?php
+include_once '../scripts/crudAdmin.script.php';
+include_once '../classes/admins.class.php';
 $title = 'Dashboard';
 include 'navbar.php';
 ?>
@@ -48,7 +50,7 @@ include 'navbar.php';
                                             <div class="text-light">
                                                 <i class="fa fa-users fs-2 mt-3 text-white me-2"></i>
                                                 <span class="fs-1 ">2</span>
-                                                <h2>Admins</h2>
+                                                <h3>Admins</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +63,7 @@ include 'navbar.php';
                                             <div class="text-light">
                                                 <i class="fa-solid fa-chart-pie fs-2 mt-3 text-white me-2"></i>
                                                 <span class="fs-1">7</span>
-                                                <a href="category.php" class="text-decoration-none text-light"><h2>Categorys</h2></a href="category.php">
+                                                <a href="category.php" class="text-decoration-none text-light"><h3>Categorys</h3></a href="category.php">
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +76,7 @@ include 'navbar.php';
                                             <div class="text-light ">
                                                 <i class="fa-brands fa-microblog fs-1 mt-3 text-white me-2"></i>
                                                 <span class="fs-1 ">6</span>
-                                                <h2>Posts</h2>
+                                                <h3>Posts</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +119,7 @@ include 'navbar.php';
 	<div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="" method="POST" id="form">
+				<form action="../scripts/crudAdmin.script.php" method="POST" id="form">
 					<div class="modal-header">
 						<h5 class="modal-title">New Post</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -127,31 +129,30 @@ include 'navbar.php';
 							<input type="hidden" name="id" >
 							<div class="mb-3">
 								<label class="form-label">title</label>
-								<input type="text" name="Name" class="form-control" required/>
+								<input type="text" name="title" class="form-control" required/>
 							</div>
 
                             <div class="mb-3">
-								<label class="form-label">image</label>
-								<input type="Number" name="Price" class="form-control" step="any" required/>
-							</div>
+                                <label for="formFile" class="form-label">Image</label>
+                                <input class="form-control" name="image" type="file" id="formFile">
+                            </div>
 							
                             <div class="mb-3">
 								<label class="form-label">Categorey</label>
-								<select class="form-select" name="categorey" required>
+								<select class="form-select" name="category" >
 									<option value="">Please select</option>
-                                    
 								</select>
 							</div>
 
                             <div class="mb-0">
 								<label class="form-label">Description</label>
-								<textarea class="form-control" name="Description" rows="7" required></textarea>
+								<textarea class="form-control" name="description" rows="7" required></textarea>
 							</div>
 						
 					</div>
 					<div class="modal-footer">
-						<a href="#" class="btn btn-white border" data-bs-dismiss="modal" id="task-cancel-btn">Cancel</a>
-						<button type="submit" name="Add" class="btn btn-dark text-light task-action-btn" id="game-save-btn">Add Post</button>
+						<a href="dashboard.php" class="btn btn-white border"  id="post-cancel-btn">Cancel</a>
+						<button type="submit" name="SavePost" class="btn btn-dark text-light task-action-btn" id="post-save-btn">Add Post</button>
 					</div>
 				</form>
 			</div>
