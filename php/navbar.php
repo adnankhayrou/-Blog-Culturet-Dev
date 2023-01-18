@@ -19,7 +19,7 @@
     <div class="container-fluid">
       <span class="navbar-brand mx-2 fs-4" >Blog Culturet-Dev</span>
       <div class="d-none d-lg-block">
-      <h5 class="offcanvas-title text-light " id="offcanvasNavbarLabel"><i class="fa fa-user text-white fs-5 me-2"></i>test</h5>
+      <h5 class="offcanvas-title text-light " id="offcanvasNavbarLabel"><i class="fa fa-user text-white fs-5 me-2"></i><?php echo $_SESSION['name'] ?></h5>
       <a href="login.php" class="nav-link px-0 align-middle"><i class="fa-solid fa-right-from-bracket text-light"></i> <span class="ms-1 d-none d-sm-inline text-light">Sign out</span> </a>
       </div>
      </div>

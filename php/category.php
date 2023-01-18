@@ -1,4 +1,7 @@
 <?php
+// include '../classes/category.class.php';
+include '../classes/scripts.class.php';
+include '../scripts/crudAdmin.script.php';
 $title = 'Categorys';
 include 'navbar.php';
 ?>
@@ -12,7 +15,7 @@ include 'navbar.php';
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg-black" id="color">
-        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel"><i class="fa fa-user text-white fs-3 me-2"></i>test</h5>
+        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel"><i class="fa fa-user text-white fs-3 me-2"></i><?php echo $_SESSION['name'] ?></h5>
         <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body bg-black" id="color">
@@ -37,31 +40,46 @@ include 'navbar.php';
 		    <button class="  rounded text-light bg-black ms-2 mt-5 d-none d-lg-block d-md-block" type="button" ><a class="text-decoration-none text-light" href="dashboard.php"><- Back</a></button>
          </div>
           <div class=" col text-end">
-            <form action="" method="POST" id="">
+            <form action="../scripts/crudAdmin.script.php" method="POST" id="">
             <div class=" d-flex">
             <input type="text" name="category" class="col ms-2 form-control mb-2 mt-5"/>
-            <button type="submit" name="Add-category" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
+            <button type="submit" name="AddCategory" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
             </div>
             </form>
          </div>
            </div>
-            
+           
+           
 <!-- ***********table of all categorys******************* -->
 <div class=" text-center table-responsive px-2" id="divTable">
            <table class="table">
               <thead class="bg-dark text-light">
                <tr>
-                 <th scope="col">#</th>
+                 <th scope="col">#<?php echo count($cat->getCategory())?></th>
                  <th scope="col">Categoreys</th>
-                 <th scope="col">Edit</th>
+                 <th scope="col">Delete</th>
               </tr> 
                 </thead>
                 <tbody>
-                
-               </tbody>
+                  
+                    <?php 
+                    global $count;
+                    $count = 1;
+                    foreach($cat->getCategory() as $cat ):?>
+                    <tr>
+                        <td class="text-right"><?php echo $count?></td>
+                        <td class="text-right"><?php echo $cat['nameCategory'];?></td>
+                        <td><a href="../scripts/crudAdmin.script.php?deletecategory=<?php echo $cat['id']; ?>"><i class="fa fa-trash text-danger me-2"></i></a></td>
+                    </tr>
+                    
+                    <?php $count++; endforeach;  ?>
+                </tbody>
             </table>
           </div>
         </div>
       </div>
 
       </div>
+
+    
+

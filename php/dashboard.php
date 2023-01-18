@@ -1,6 +1,7 @@
 <?php
 include_once '../scripts/crudAdmin.script.php';
 include_once '../classes/admins.class.php';
+include_once '../classes/scripts.class.php';
 $title = 'Dashboard';
 include 'navbar.php';
 ?>
@@ -16,7 +17,7 @@ include 'navbar.php';
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg-black" id="color">
-        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel"><i class="fa fa-user text-white fs-3 me-2"></i>test</h5>
+        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel"><i class="fa fa-user text-white fs-3 me-2"></i><?php echo $_SESSION['name'] ?></h5>
         <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body bg-black" id="color">
@@ -133,14 +134,17 @@ include 'navbar.php';
 							</div>
 
                             <div class="mb-3">
-                                <label for="formFile" class="form-label">Image</label>
-                                <input class="form-control" name="image" type="file" id="formFile">
+                                <label for="image" class="col-form-label" id="image">image</label>
+                                <input type="file" class="form-control" id="images" name="image">
                             </div>
 							
                             <div class="mb-3">
 								<label class="form-label">Categorey</label>
 								<select class="form-select" name="category" >
 									<option value="">Please select</option>
+                                    <?php foreach($teams as $team):?>
+                                        <option value="<?php echo $team->getId(); ?>"><?php echo $team->getCountry(); ?> </option>
+                                    <?php endforeach;?>
 								</select>
 							</div>
 
