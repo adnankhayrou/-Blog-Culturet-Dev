@@ -49,13 +49,13 @@
             $this->description = $des;
         }
 
-        public function getObject($dbObject){
-            $this->id = $dbObject->id;
-            $this->title = $dbObject->title;
-            $this->image = $dbObject->image;
-            $this->category = $dbObject->categorey;
-            $this->description = $dbObject->description;
-        }
+        // public function getObject($dbObject){
+        //     $this->id = $dbObject->id;
+        //     $this->title = $dbObject->title;
+        //     $this->image = $dbObject->image;
+        //     $this->category = $dbObject->categorey;
+        //     $this->description = $dbObject->description;
+        // }
 
         //crud
 
@@ -64,19 +64,19 @@
             $sql = "SELECT * FROM posts";
             $stmt = $database->connect()->prepare($sql);
             $stmt->execute();
-            $dbPosts = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $dbPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             return $dbPosts;
             
         }
 
 
-        // public function addPost(){
-        // $database =new Database();
-        // $sql="INSERT INTO posts (title,image,description,category_id)  VALUES (?,?,?,?)";
-        // $stmt= $database->connect()->prepare($sql);
-        // $stmt->execute([$this->getTitle(),$this->getImage(),$this->getDescription(),$this->getCategory()]);    
-        // }
+        public function addPost(){
+        $database =new Database();
+        $sql="INSERT INTO posts (title,image,description,category_id)  VALUES (?,?,?,?)";
+        $stmt= $database->connect()->prepare($sql);
+        $stmt->execute([$this->getTitle(),$this->getImage(),$this->getDescription(),$this->getCategory()]);    
+        }
 
         public function updatePost($id){
         }

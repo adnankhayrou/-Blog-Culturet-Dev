@@ -142,8 +142,8 @@ include 'navbar.php';
 								<label class="form-label">Categorey</label>
 								<select class="form-select" name="category" >
 									<option value="">Please select</option>
-                                    <?php foreach($teams as $team):?>
-                                        <option value="<?php echo $team->getId(); ?>"><?php echo $team->getCountry(); ?> </option>
+                                    <?php foreach($cat->getCategory() as $cat ):?>
+                                        <option value="<?php echo $cat['id']; ?>"><?php echo $cat['nameCategory'];?> </option>
                                     <?php endforeach;?>
 								</select>
 							</div>
