@@ -4,6 +4,9 @@ include '../classes/scripts.class.php';
 include '../scripts/crudAdmin.script.php';
 $title = 'Categorys';
 include 'navbar.php';
+
+if(!isset($_SESSION['name']))  header('location:login.php');
+
 ?>
 
 <!-- NAVBAR  -->
@@ -24,7 +27,7 @@ include 'navbar.php';
               <a class="nav-link active text-light" aria-current="page" href="dashboard.php"><- Back</a>
             </li>
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="login.php"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
+            <a class="nav-link active text-light" aria-current="page" href="../scripts/crudAdmin.script.php?logout"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
           </li>
       </div>
     </div>
@@ -63,7 +66,6 @@ include 'navbar.php';
                 <tbody>
                   
                     <?php 
-                    global $count;
                     $count = 1;
                     foreach($cat->getCategory() as $cat ):?>
                     <tr>

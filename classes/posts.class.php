@@ -61,10 +61,21 @@
 
         public function getPosts(){
             $database = new Database();
-            $sql = "SELECT * FROM posts";
+            $sql = "SELECT *, posts.id id_post FROM posts INNER JOIN category ON category.id = posts.category_id ORDER BY posts.id ";
             $stmt = $database->connect()->prepare($sql);
             $stmt->execute();
             $dbPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $dbPosts;
+            
+        }
+
+        public function getPost($id){
+            $database = new Database();
+            $sql = "SELECT *,posts.id id_post  FROM posts INNER JOIN category ON category.id = posts.category_id   WHERE posts.id = ?";
+            $stmt = $database->connect()->prepare($sql);
+            $stmt->execute([$id]);
+            $dbPosts = $stmt->fetch(PDO::FETCH_ASSOC);
             
             return $dbPosts;
             
@@ -78,11 +89,24 @@
         $stmt->execute([$this->getTitle(),$this->getImage(),$this->getDescription(),$this->getCategory()]);    
         }
 
-        public function updatePost($id){
+        public function updatepost($id){
+            $database = new Database();
+            $query="UPDATE posts SET title=? , image=? , description=? , category_id=? WHERE id=?";
+            $result = $database->connect()->prepare($query);
+            $result->execute([$this->getTitle(),$this->getImage(),$this->getDescription(),$this->getCategory(), $id]);
+            if($result)
+                header('location:../php/dashboard.php');
         }
 
         public function deletePost($id){
+            $database =new Database();
+            $query="DELETE FROM posts WHERE id=?";
+            $result = $database->connect()->prepare($query);
+            $result->execute([$id]);
+            if($result)
+                header('location:../php/dashboard.php');
         }
+        
     }
 
 

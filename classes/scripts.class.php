@@ -50,6 +50,17 @@ session_start();
                 echo"<script>alert('incorrect inputs');document.location='../php/login.php'</script>";
             }
         }
+
+        public function Admins() { 
+            $conn = new Database();
+
+            $sql = "SELECT * FROM admins ";
+            $stmt =  $conn->connect()->prepare($sql);
+            $stmt->execute();
+            $admin = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+            return $admin;
+        }
+
         
 
         public function logOut() {
@@ -60,8 +71,8 @@ session_start();
                 echo"<script>alert('successfully');document.location='../php/login.php'</script>";
             }
         }
-        
 
     }
-    
+
+    $admins = new admin ;
 ?> 

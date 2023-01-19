@@ -30,7 +30,7 @@ include 'navbar.php';
             <button type="submit" name="signup" class="btn btn-dark d-grid gap-2 col-6 mx-auto">sign Up</button>
         </div>
         <div  class="text-center">
-            <p class=" my-2 ">already have an acount! <a href="login.php" class="register-text text-danger"> login</a></p>
+            <p class=" my-2 ">already have an acount! <a href="login.php" class="register-text text-danger text-decoration-none"> login</a></p>
         </div>
     </form>
 </div>

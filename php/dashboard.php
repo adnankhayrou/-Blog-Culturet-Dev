@@ -4,7 +4,10 @@ include_once '../classes/admins.class.php';
 include_once '../classes/scripts.class.php';
 $title = 'Dashboard';
 include 'navbar.php';
+
+if(!isset($_SESSION['name']))  header('location:login.php');
 ?>
+
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
@@ -23,7 +26,7 @@ include 'navbar.php';
       <div class="offcanvas-body bg-black" id="color">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="login.php"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
+            <a class="nav-link active text-light" aria-current="page" href="../scripts/crudAdmin.script.php?logout"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
           </li>
       </div>
     </div>
@@ -50,7 +53,7 @@ include 'navbar.php';
                                         <div class="overview-box clearfix">
                                             <div class="text-light">
                                                 <i class="fa fa-users fs-2 mt-3 text-white me-2"></i>
-                                                <span class="fs-1 ">2</span>
+                                                <span class="fs-1 "><?php echo count($admins->Admins())?></span>
                                                 <h3>Admins</h3>
                                             </div>
                                         </div>
@@ -63,7 +66,7 @@ include 'navbar.php';
                                         <div class="overview-box clearfix">
                                             <div class="text-light">
                                                 <i class="fa-solid fa-chart-pie fs-2 mt-3 text-white me-2"></i>
-                                                <span class="fs-1">7</span>
+                                                <span class="fs-1"><?php echo count($cat->getCategory())?></span>
                                                 <a href="category.php" class="text-decoration-none text-light"><h3>Categorys</h3></a href="category.php">
                                             </div>
                                         </div>
@@ -76,7 +79,7 @@ include 'navbar.php';
                                         <div class="overview-box clearfix">
                                             <div class="text-light ">
                                                 <i class="fa-brands fa-microblog fs-1 mt-3 text-white me-2"></i>
-                                                <span class="fs-1 ">6</span>
+                                                <span class="fs-1 "><?php echo count($post->getPosts())?></span>
                                                 <h3>Posts</h3>
                                             </div>
                                         </div>
@@ -99,16 +102,29 @@ include 'navbar.php';
            <table class="table">
               <thead class="bg-dark text-light">
                <tr>
-                 <th scope="col">#</th>
+                 <th scope="col">#<?php echo count($post->getPosts())?></th>
                  <th scope="col">title</th>
                  <th scope="col">image</th>
                  <th scope="col">Categorey</th>
                  <th scope="col">Description</th>
                  <th scope="col">Edit</th>
+                 <th scope="col">Delete</th>
               </tr> 
                 </thead>
                 <tbody>
-                
+                <?php 
+                    $count = 1;
+                    foreach($post->getPosts() as $post ):?>
+                    <tr>
+                        <td class="text-right"><?php echo $count?></td>
+                        <td class="text-right"><?php echo $post['title'];?></td>
+                        <td class="text-right"><?php echo $post['image'];?></td>
+                        <td class="text-right"><?php echo $post['nameCategory'];?></td>
+                        <td class="text-right"><?php echo $post['description'];?></td>
+                        <td><a href="../php/edit.post.php?edit=<?php echo $post['id_post']; ?>"><i class="fa fa-edit me-2"></i></a></td>
+                        <td><a href="../scripts/crudAdmin.script.php?deletePost=<?php echo $post['id_post']; ?>"><i class="fa fa-trash text-danger me-2"></i></a></td>
+                    </tr>
+                    <?php $count++; endforeach;?>
                </tbody>
             </table>
           </div>
@@ -135,7 +151,7 @@ include 'navbar.php';
 
                             <div class="mb-3">
                                 <label for="image" class="col-form-label" id="image">image</label>
-                                <input type="file" class="form-control" id="images" name="image">
+                                <input type="file" class="form-control" id="images" name="image" >
                             </div>
 							
                             <div class="mb-3">
@@ -150,7 +166,7 @@ include 'navbar.php';
 
                             <div class="mb-0">
 								<label class="form-label">Description</label>
-								<textarea class="form-control" name="description" rows="7" required></textarea>
+								<textarea class="form-control" name="description" rows="7"></textarea>
 							</div>
 						
 					</div>
@@ -164,6 +180,6 @@ include 'navbar.php';
 	</div>
 
 
-    <!-- <script src="js/app.js"></script> -->
+<script src="../assets/js/app.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 <?php 
 include_once '../classes/posts.class.php';
 include_once '../classes/category.class.php';
+include_once '../classes/scripts.class.php';
+
 
 
 if(isset($_POST['SavePost'])){
@@ -21,9 +23,8 @@ if(isset($_POST['SavePost'])){
     header("Location:../php/dashboard.php");
 
 }
-
  $post =new post();
- $posts =$post->getPosts();
+
 
 
 
@@ -39,13 +40,25 @@ if(isset($_POST['AddCategory'])){
     header("Location:../php/category.php");
 
 }
-
  $cat =new category();
+
+
+
 
  if(isset($_GET['deletecategory'])){
     $cat= new category();
     $cat->deletecategory($_GET['deletecategory']);
 }
 
+
+
+if(isset($_GET['deletePost'])){
+    $post= new post();
+    $post->deletePost($_GET['deletePost']);
+}
+
+if(isset($_GET['logout'])){
+    $admins->logOut();
+}
 
 ?>

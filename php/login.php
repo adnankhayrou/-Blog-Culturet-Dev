@@ -5,7 +5,7 @@ include 'navbar.php';
 ?>
 
 
-<div class="col-12 col-lg-4 col-md-6 mx-auto mt-5 p-2">
+<div class="col-12 col-lg-4 col-md-6 mx-auto mt-5 p-2" id="login">
 <form action="../scripts/login.script.php" method="POST" id="form" class="formLogin " >
 <div class="modal-header row">
 						<h5 class="modal-title mt-5 fs-3 text-center">LOGIN</h5>
@@ -22,7 +22,7 @@ include 'navbar.php';
     <button type="submit" name="login" class="btn btn-dark d-grid gap-2 col-6 mx-auto">Login</button>
   </div>
   <div  class="text-center">
-    <p class=" my-2 ">don't have an acount! <a href="signup.php" class="register-text text-danger"> Register Now</a></p>
+    <p class=" my-2 ">don't have an acount! <a href="signup.php" class="register-text text-danger text-decoration-none"> Register Now</a></p>
   </div>
 </form>
 </div>
