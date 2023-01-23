@@ -94,7 +94,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                                             <div class="text-light ">
                                                 <i class="fa-brands fa-microblog fs-1 mt-3 text-white me-2"></i>
                                                 <span class="fs-1 "><?php echo count($post->statistiques())?></span>
-                                                <h3>All Posts</h3>
+                                                <a href="allPosts.php" class="text-decoration-none text-light"><h3>All Posts</h3></a>
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
         <!-- ***********title and add button*************** -->
         <div class="test col py-1">
 			     <div class="row">
-             <h3 class=" col-7 mt-5 ms-1">all Posts</h3>
+             <h3 class=" col-7 mt-5 ms-1">Your Posts</h3>
           <div class=" col text-end">
 		    <a class="rounded text-light bg-black mx-2 mt-5 text-decoration-none p-1" href="add.post.php"  type="button" >Add Post <i class="fa-solid fa-plus"></i></a>
          </div>
@@ -133,7 +133,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                     <tr>
                         <td class="text-right"><?php echo $count?></td>
                         <td class="text-right"><?php echo $post['title'];?></td>
-                        <td class="text-right w-25 h-25"><img class="w-25 h-25 rounded" src="../assets/images/<?= $post['image'];?>"></td>
+                        <td class="text-right"><img class="rounded" src="../assets/images/<?= $post['image'];?>" width="100" height="60"></td>
                         <td class="text-right"><?php echo $post['nameCategory'];?></td>
                         <td class="text-right"><?php echo $post['description'];?></td>
                         <td><a href="../php/edit.post.php?edit=<?php echo $post['id_post']; ?>"><i class="fa fa-edit me-2"></i></a></td>

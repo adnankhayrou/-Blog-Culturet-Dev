@@ -2,7 +2,6 @@
 
     let addArticle = document.querySelector("#btn-plus") ;
     let form = document.getElementById('form') ;
-
     addArticle.addEventListener("click", (e)=>{
     e.preventDefault() ;
     const newTitleField = document.createElement('input');
@@ -15,9 +14,12 @@
     const newBodyLabel = document.createElement('label') ;
     const newBodyTextArea = document.createElement('TEXTAREA') ;
     const OPTIONS = document.querySelectorAll('option') ;
+    const Optionslength = document.getElementById("optionLength").value;
+    // console.log(Optionslength)
+    // console.log(OPTIONS.length)
     let CategoryOptionn = [] ;
     
-    for (let i = 0; i < OPTIONS.length; i++) {
+    for (let i = 0; i <=Optionslength; i++) {
       let option = document.createElement('option') ;
       CategoryOptionn.push(option) ;
       CategoryOptionn[i].innerHTML = OPTIONS[i].innerHTML ;
@@ -41,12 +43,11 @@
    newImageLabel.innerHTML = "Image" ;
    newCategoryLabel.innerHTML = "Category" ;
    newBodyLabel.innerHTML = "Description" ;
-
-  
-    for (let i = 0; i < CategoryOptionn.length; i++) {
-        // if (newCategorySelect.length < 6 ) 
-        newCategorySelect.append(CategoryOptionn[i]) ;
-    }
+   
+         for (let i = 0; i <=Optionslength; i++) {
+            newCategorySelect.append(CategoryOptionn[i]) ;
+        }
+   
 
     newTitleField.setAttribute('type','text') ;
     newTitleField.setAttribute('placeholder','title') ;

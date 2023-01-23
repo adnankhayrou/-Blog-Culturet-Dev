@@ -63,6 +63,17 @@
             
         }
 
+        public function getAllPosts(){
+            $database = new Database();
+            $sql = "SELECT *, posts.id as id_post FROM posts INNER JOIN category ON category.id = posts.category_id INNER JOIN admins ON admins.id = posts.admin_id  ORDER BY posts.id";
+            $stmt = $database->connect()->prepare($sql);
+            $stmt->execute();
+            $dbPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $dbPosts;
+            
+        }
+
         public function getPost($id){
             $database = new Database();
             $sql = "SELECT *,posts.id id_post  FROM posts INNER JOIN category ON category.id = posts.category_id   WHERE posts.id = ?";

@@ -32,6 +32,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 							
                             <div class="mb-3">
 								<label class="form-label">Categorey</label>
+                                <input type="hidden" value="<?php echo count($cat->getCategory())?>" id="optionLength">
 								<select class="form-select" name="category" >
 									<option value="">Please select</option>
                                     <?php foreach($cat->getCategory() as $cat ):?>
