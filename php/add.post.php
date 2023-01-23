@@ -9,7 +9,6 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 ?>
 
 <!-- add post form -->
-    
 </head>
 <div class="container mt-5" id="modal"&>
     <div class="app-content">
@@ -18,32 +17,37 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                 <h5 class="modal-title mt-5 mb-3">Add Post</h5>
             </div>
             <div class="modal-body">
-    
             <!-- <input type="hidden" name="id" > -->
 							<div class="mb-3">
 								<label class="form-label">title</label>
-								<input type="text" name="title" class="form-control" required/>
+								<input id="title" type="text" name="title" class="form-control"/>
+                                <small class="fw-bold"></small>
+
 							</div>
 
                             <div class="mb-3">
                                 <label for="image" class="col-form-label" id="image">image</label>
-                                <input type="file" class="form-control" id="images" name="image" >
+                                <input type="file" class="form-control" id="images" name="image"/>
+                                <small class="fw-bold"></small>
                             </div>
 							
                             <div class="mb-3">
 								<label class="form-label">Categorey</label>
                                 <input type="hidden" value="<?php echo count($cat->getCategory())?>" id="optionLength">
-								<select class="form-select" name="category" >
+								<select id="select" class="form-select" name="category">
 									<option value="">Please select</option>
                                     <?php foreach($cat->getCategory() as $cat ):?>
                                         <option value="<?php echo $cat['id']; ?>"><?php echo $cat['nameCategory'];?> </option>
                                     <?php endforeach;?>
 								</select>
+                                <small class="fw-bold"></small>
 							</div>
 
                             <div class="mb-2">
 								<label class="form-label">Description</label>
-								<textarea class="form-control" name="description" rows="4" placeholder="Article Body !!"></textarea>
+								<textarea id="description" class="form-control" name="description" rows="4" placeholder="Article Body !!"></textarea>
+                                <small class="fw-bold"></small>
+
 							</div>
 						
 					</div>
@@ -57,4 +61,5 @@ if(!isset($_SESSION['name']))  header('location:login.php');
     </div>
 </div>
 <script src="../assets/js/app.js"></script></body>
+
 </html>

@@ -45,27 +45,32 @@ if(isset($_GET['edit'])){
 
 							<div class="mb-2">
 								<label class="form-label">title</label>
-								<input type="text" name="title" class="form-control" value="<?php echo $title; ?>" required/>
-							</div>
+								<input id="title" type="text" name="title" class="form-control" value="<?php echo $title; ?>" data-parsley-minlength="3" data-parsley-required/>
+                                <small class="fw-bold"></small>
+                            </div>
 
                             <div class="mb-3">
                                 <label for="image" class="col-form-label" id="image">image</label>
-                                <input type="file" class="form-control" id="images" name="image" required>
+                                <input type="file" class="form-control" id="images" name="image" data-parsley-required/>
+                                <small class="fw-bold"></small>
                             </div>
 							
                             <div class="mb-3">
 								<label class="form-label">Categorey</label>
-								<select class="form-select" name="category" >
+								<select id="select" class="form-select" name="category" data-parsley-required>
 									<option value="">Please select</option>
                                     <?php foreach($cat->getCategory() as $cat ):?>
                                         <option <?= ($cat['id'] == $idCat) ? "selected" : "" ?> value="<?php echo $cat['id']; ?>"><?php echo $cat['nameCategory'];?> </option>
                                     <?php endforeach;?>
 								</select>
+                                <small class="fw-bold"></small>
 							</div>
 
                             <div class="mb-3">
 								<label class="form-label">Description</label>
-								<textarea class="form-control mb-3" name="description" rows="7"  required> <?php echo $description; ?></textarea>
+								<textarea class="form-control mb-3" name="description" rows="4" data-parsley-trigger="onkeyup" data-parsley-minlength="5" data-parsley-maxlength="100" 
+                                 data-parsley-minlength-message="You need to enter at least a 5 character comment.." 
+                                 data-parsley-validation-threshold="10" data-parsley-required> <?php echo $description; ?></textarea>
 							</div>
 						
 					</div>
@@ -76,5 +81,7 @@ if(isset($_GET['edit'])){
         </form>
     </div>
 </div>
-<script src="../assets/js/app.js"></script></body>
+
+<script src="../assets/js/app.js"></script>
+</body>
 </html>

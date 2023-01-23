@@ -50,9 +50,9 @@ if(isset($_POST['SaveCat'])){
 		    <button class="  rounded text-light bg-black ms-2 mt-5 d-none d-lg-block d-md-block" type="button" ><a class="text-decoration-none text-light" href="dashboard.php"><- Back</a></button>
          </div>
           <div class=" col text-end">
-            <form action="../scripts/crudAdmin.script.php" method="POST" id="">
+            <form action="../scripts/crudAdmin.script.php" method="POST" id="" data-parsley-validate>
             <div class=" d-flex">
-            <input type="text" name="category" class="col ms-2 form-control mb-2 mt-5"/>
+            <input type="text" name="category" class="col ms-2 form-control mb-2 mt-5" data-parsley-minlength="3" data-parsley-required/>
             <button type="submit" name="AddCategory" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
             </div>
             </form>
@@ -97,7 +97,7 @@ if(isset($_POST['SaveCat'])){
 	<div class="modal fade" id="modal-cat">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="category.php" method="POST" id="form">
+				<form action="category.php" method="POST" id="form" data-parsley-validate>
 					<div class="modal-header">
 						<h5 class="modal-title">Edit Category</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -107,7 +107,7 @@ if(isset($_POST['SaveCat'])){
 							<input type="hidden" id="hiddenId" name="id" value="" >
 							<div class="mb-3">
 								<label class="form-label">Category</label>
-								<input type="text" name="category" id="Category" class="col form-control" value=""/>
+								<input type="text" name="category" id="Category" class="col form-control" value="" data-parsley-minlength="3" data-parsley-required/>
 							</div>
 
 						

@@ -42,13 +42,12 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 		    <button class="  rounded text-light bg-black ms-2 mt-5 d-none d-lg-block d-md-block" type="button" ><a class="text-decoration-none text-light" href="dashboard.php"><- Back</a></button>
          </div>
           <div class=" col text-center">
-          <h2 class="  mt-5 m-1">all Posts</h2>
+          <h2 class="  mt-5 m-1 ms-0">all Posts</h2>
          </div>
            </div>
       <!-- ***********table of all posts******************* -->
-     <div class=" text-center " id="divTable">
-           <!-- <table class="table"> -->
-           <table id="table" class=" table table-striped table-responsive" style="width:100%">
+     <div class="text-center pe-0" id="divTable">
+           <table id="table" class=" table table-striped table-responsive px-2" style="width:100%">
               <thead class="bg-dark text-light">
                <tr>
                  <th class="text-center">#<?php echo count($post->getPosts())?></th>

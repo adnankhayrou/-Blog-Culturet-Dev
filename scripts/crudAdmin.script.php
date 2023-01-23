@@ -12,6 +12,11 @@ if(isset($_POST['SavePost'])){
     $ctegory=$_POST['category'];
     $description=$_POST['description'];
 
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "/<pre>";
+
+
     $getPost = new post();
     
     $getPost->setTitle($title); 

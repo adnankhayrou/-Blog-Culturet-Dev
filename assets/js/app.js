@@ -1,5 +1,50 @@
     editorStart();
 
+    // ======================
+function showEroor(input, message){
+    let formControl = input.parentElement ;
+    input.classList.add('border-danger') ;
+    let small = formControl.querySelector("small") ;
+    small.classList.add("text-danger") ;
+    small.innerText = message ;
+}
+
+function showSuccess(input){
+    input.classList.add("border-success")
+}
+
+function isValidEmail(email){
+    const pattern =/^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/ ;
+    return pattern.match(email.value) ;
+}
+
+
+let btnPost = document.getElementById("post-save-btn") ;
+let title = document.getElementById("title") ;
+let image = document.getElementById("images") ;
+let select = document.getElementById("select") ;
+
+btnPost.addEventListener('click', (e)=>{
+    if(title.value == ""){
+        e.preventDefault() ;
+        showEroor(title, "title is required !!")
+    }else{
+        showSuccess(title, "title is good")
+    }
+    if(image.value == ""){
+        e.preventDefault() ;
+        showEroor(image, "Image is required !!")
+    }
+    
+    if(select.value == ""){
+        e.preventDefault() ;
+        showEroor(select, "Please select  !!")
+    }
+
+})
+
+
+// ======================
     let addArticle = document.querySelector("#btn-plus") ;
     let form = document.getElementById('form') ;
     addArticle.addEventListener("click", (e)=>{
@@ -12,11 +57,9 @@
     const newCategorySelect = document.createElement('select') ;
     const newCategoryOption = document.createElement('option') ;
     const newBodyLabel = document.createElement('label') ;
-    const newBodyTextArea = document.createElement('TEXTAREA') ;
+    const newBodyTextArea = document.createElement('textarea') ;
     const OPTIONS = document.querySelectorAll('option') ;
     const Optionslength = document.getElementById("optionLength").value;
-    // console.log(Optionslength)
-    // console.log(OPTIONS.length)
     let CategoryOptionn = [] ;
     
     for (let i = 0; i <=Optionslength; i++) {
@@ -26,7 +69,8 @@
       CategoryOptionn[i].setAttribute('value',i)
     }
     
-
+// =========================================
+// =========================================
    newTitleField.classList.add('form-control') ;
    newTitleLabel.classList.add('form-label') ;
 
@@ -51,15 +95,15 @@
 
     newTitleField.setAttribute('type','text') ;
     newTitleField.setAttribute('placeholder','title') ;
-    newTitleField.setAttribute('name', 'title') ;
+    newTitleField.setAttribute('name', 'title[]') ;
 
     newImageInput.setAttribute('type','file') ;
-    newImageInput.setAttribute('name', 'image') ;
+    newImageInput.setAttribute('name', 'image[]') ;
 
-    newCategorySelect.setAttribute('name','category') ;
+    newCategorySelect.setAttribute('name','category[]') ;
     newCategoryOption.setAttribute('value','') ;
 
-    newBodyTextArea.setAttribute('name', 'description') ;
+    newBodyTextArea.setAttribute('name', 'description[]') ;
     newBodyTextArea.setAttribute('placeholder', 'Article Body !!') ;
 
 
