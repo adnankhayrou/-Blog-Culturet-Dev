@@ -44,7 +44,7 @@
 
   
     for (let i = 0; i < CategoryOptionn.length; i++) {
-        if (newCategorySelect.length < 6 ) 
+        // if (newCategorySelect.length < 6 ) 
         newCategorySelect.append(CategoryOptionn[i]) ;
     }
 
@@ -79,6 +79,14 @@ function editorStart(){
         { value: 'First.Name', title: 'First Name' },
         { value: 'Email', title: 'Email' },],
     });
+}
+
+
+function editCat(id){
+    console.log(id);
+ let test =   document.getElementById('hiddenId').value=id;
+ console.log(test);
+    document.getElementById('Category').value=document.querySelector(`#categoryV${id}`).innerText;
 }
 
 

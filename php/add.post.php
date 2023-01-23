@@ -42,11 +42,11 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 
                             <div class="mb-2">
 								<label class="form-label">Description</label>
-								<textarea class="form-control" name="description" placeholder="Article Body !!"></textarea>
+								<textarea class="form-control" name="description" rows="4" placeholder="Article Body !!"></textarea>
 							</div>
 						
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer mb-5">
 						<a href="dashboard.php" class="btn btn-white border"  id="post-cancel-btn">Cancel</a>
 						<button type="button" class="btn btn-warning text-light task-action-btn ms-2" id="btn-plus">Another Post</button>
                         <button type="submit" name="SavePost" class="btn btn-dark text-light task-action-btn ms-2" id="post-save-btn">Add Posts</button>

@@ -48,7 +48,7 @@
 
         public function updatecategory($id){
             $database = new Database();
-            $query="UPDATE posts SET nameCategory=?  WHERE id=?";
+            $query="UPDATE category SET nameCategory=?  WHERE id=?";
             $result = $database->connect()->prepare($query);
             $result->execute([$this->name, $id]);
             if($result)

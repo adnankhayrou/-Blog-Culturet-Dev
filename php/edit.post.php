@@ -10,8 +10,8 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 $connect = new Database;
 $connect->connect();
 if(isset($_POST['editPost'])){
-    $match= new post($_POST['title'] , $_POST['image'] , $_POST['category'] , $_POST['description']);
-    $match->updatepost($_POST['id']);
+    $post= new post($_POST['title'] , $_POST['image'] , $_POST['category'] , $_POST['description']);
+    $post->updatepost($_POST['id']);
 }
 
 if(isset($_GET['edit'])){

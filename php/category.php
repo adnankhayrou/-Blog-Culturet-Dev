@@ -8,14 +8,11 @@ include 'navbar.php';
 
 if(!isset($_SESSION['name']))  header('location:login.php');
 
-if(isset($_GET['edit'])){
-  $cats= new category();
-  $result = $cats->getCategoryy($_GET['edit']);
-
-  if($result){
-      $id = $result['id_post'];
-      $name = $result['nameCategory'];
-  }
+$connect = new Database;
+$connect->connect();
+if(isset($_POST['SaveCat'])){
+    $cat = new category($_POST['category']);
+    $cat->updatecategory($_POST['id']);
 }
 ?>
 
@@ -82,8 +79,8 @@ if(isset($_GET['edit'])){
                     foreach($cat->getCategory() as $cat ):?>
                     <tr>
                         <td class="text-right"><?php echo $count?></td>
-                        <td class="text-right"><?php echo $cat['nameCategory'];?></td>
-                        <td><a href="#modal-cat" data-bs-toggle="modal"><i class="fa fa-edit me-2"></i></a></td>
+                        <td id="categoryV<?php echo $cat['id']; ?>" class="text-right"><?php echo $cat['nameCategory'];?></td>
+                        <td><button class="btn border-none bg-none" href="#modal-cat" data-bs-toggle="modal" onclick="editCat(<?php echo $cat['id']; ?>);"><i class="fa fa-edit text-primary me-2 "></i></button></td>
                         <td><a href="../scripts/crudAdmin.script.php?deletecategory=<?php echo $cat['id']; ?>"><i class="fa fa-trash text-danger me-2"></i></a></td>
                     </tr>
                     
@@ -107,10 +104,10 @@ if(isset($_GET['edit'])){
 					</div>
 					<div class="modal-body">
 			
-							<input type="hidden" name="id" >
+							<input type="hidden" id="hiddenId" name="id" value="" >
 							<div class="mb-3">
 								<label class="form-label">Category</label>
-								<input type="text" name="category" class="col form-control" value=""/>
+								<input type="text" name="category" id="Category" class="col form-control" value=""/>
 							</div>
 
 						
