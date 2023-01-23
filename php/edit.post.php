@@ -5,6 +5,8 @@ include_once '../classes/posts.class.php';
 $title = 'Edit page';
 include 'navbar.php';
 
+if(!isset($_SESSION['name']))  header('location:login.php');
+
 $connect = new Database;
 $connect->connect();
 if(isset($_POST['editPost'])){
@@ -19,7 +21,7 @@ if(isset($_GET['edit'])){
     if($result){
         $id = $result['id_post'];
         $title = $result['title'];
-        // $image = $result['image'];
+        $image = $result['image'];
         $category = $result['nameCategory'];
         $description = $result['description'];
         $idCat = $result['category_id'];
@@ -28,7 +30,7 @@ if(isset($_GET['edit'])){
 
 ?>
 
-<!-- add post form -->
+<!-- edit post form -->
     
 </head>
 <div class="container mt-5" id="modal"&>
@@ -48,7 +50,7 @@ if(isset($_GET['edit'])){
 
                             <div class="mb-3">
                                 <label for="image" class="col-form-label" id="image">image</label>
-                                <input type="file" class="form-control" id="images" name="image" >
+                                <input type="file" class="form-control" id="images" name="image" required>
                             </div>
 							
                             <div class="mb-3">

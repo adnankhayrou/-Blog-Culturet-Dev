@@ -8,14 +8,14 @@ include_once '../classes/scripts.class.php';
 if(isset($_POST['SavePost'])){
 
     $title=$_POST['title']; 
-    // $image=$_FILES['IMAGE']['name'];
+    $image=$_POST['image'];
     $ctegory=$_POST['category'];
     $description=$_POST['description'];
 
     $getPost = new post();
     
     $getPost->setTitle($title); 
-    // $getPost->setImage($image); 
+    $getPost->setImage($image); 
     $getPost->setCategory($ctegory); 
     $getPost->setDescription($description);
 

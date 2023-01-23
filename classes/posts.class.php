@@ -49,19 +49,12 @@
             $this->description = $des;
         }
 
-        // public function getObject($dbObject){
-        //     $this->id = $dbObject->id;
-        //     $this->title = $dbObject->title;
-        //     $this->image = $dbObject->image;
-        //     $this->category = $dbObject->categorey;
-        //     $this->description = $dbObject->description;
-        // }
-
         //crud
 
         public function getPosts(){
+            $adminId = $_SESSION['id'];
             $database = new Database();
-            $sql = "SELECT *, posts.id id_post FROM posts INNER JOIN category ON category.id = posts.category_id ORDER BY posts.id ";
+            $sql = "SELECT *, posts.id as id_post FROM posts INNER JOIN category ON category.id = posts.category_id WHERE posts.admin_id = $adminId  ORDER BY posts.id";
             $stmt = $database->connect()->prepare($sql);
             $stmt->execute();
             $dbPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -81,12 +74,24 @@
             
         }
 
+        public function statistiques(){
+            $database = new Database();
+            $sql = "SELECT * FROM posts";
+            $stmt = $database->connect()->prepare($sql);
+            $stmt->execute();
+            $dbPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $dbPosts;
+            
+        }
+
 
         public function addPost(){
+        $adminId = $_SESSION['id'];
         $database =new Database();
-        $sql="INSERT INTO posts (title,image,description,category_id)  VALUES (?,?,?,?)";
+        $sql="INSERT INTO posts (title,image,description,category_id,admin_id)  VALUES (?,?,?,?,?)";
         $stmt= $database->connect()->prepare($sql);
-        $stmt->execute([$this->getTitle(),$this->getImage(),$this->getDescription(),$this->getCategory()]);    
+        $stmt->execute([$this->getTitle(),$this->getImage(),$this->getDescription(),$this->getCategory(),$adminId]);    
         }
 
         public function updatepost($id){

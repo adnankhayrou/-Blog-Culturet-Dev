@@ -47,7 +47,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                             </div>
                         </div>
                         <div class="row m-t-25 mt-2 d-flex justify-content-center">
-                            <div class="col-sm-10 col-lg-3 bg-black rounded me-2 mb-2">
+                            <div class="col-sm-10 col-lg-2 bg-black rounded me-2 mb-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -60,27 +60,41 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-10 col-lg-3 bg-black rounded me-2 mb-2">
+                            <div class="col-sm-10 col-lg-2 bg-black rounded me-2 mb-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="text-light">
                                                 <i class="fa-solid fa-chart-pie fs-2 mt-3 text-white me-2"></i>
                                                 <span class="fs-1"><?php echo count($cat->getCategory())?></span>
-                                                <a href="category.php" class="text-decoration-none text-light"><h3>Categorys</h3></a href="category.php">
+                                                <a href="category.php" class="text-decoration-none text-light"><h3>Categorys</h3></a>
+                                                <!-- href="category.php" -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-10 col-lg-3 bg-black rounded me-2 mb-2">
+                            <div class="col-sm-10 col-lg-2 bg-black rounded me-2 mb-2">
                                 <div class="overview-item overview-item--c1" id="color">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="text-light ">
                                                 <i class="fa-brands fa-microblog fs-1 mt-3 text-white me-2"></i>
                                                 <span class="fs-1 "><?php echo count($post->getPosts())?></span>
-                                                <h3>Posts</h3>
+                                                <h3><?php echo $_SESSION['name'] ?> Posts</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-lg-2 bg-black rounded me-2 mb-2">
+                                <div class="overview-item overview-item--c1" id="color">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="text-light ">
+                                                <i class="fa-brands fa-microblog fs-1 mt-3 text-white me-2"></i>
+                                                <span class="fs-1 "><?php echo count($post->statistiques())?></span>
+                                                <h3>All Posts</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -93,22 +107,23 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 			     <div class="row">
              <h3 class=" col-7 mt-5 ms-1">all Posts</h3>
           <div class=" col text-end">
-		    <button class="  rounded text-light bg-black mx-2 mt-5" href="#modal-task" data-bs-toggle="modal" type="button" >Add Post <i class="fa-solid fa-plus"></i></button>
+		    <a class="rounded text-light bg-black mx-2 mt-5 text-decoration-none p-1" href="add.post.php"  type="button" >Add Post <i class="fa-solid fa-plus"></i></a>
          </div>
 			</div>
-            
+            <!-- href="#modal-task" data-bs-toggle="modal" -->
       <!-- ***********table of all posts******************* -->
      <div class=" text-center table-responsive" id="divTable">
-           <table class="table">
+           <!-- <table class="table"> -->
+           <table id="table" class="table table-striped" style="width:100%">
               <thead class="bg-dark text-light">
                <tr>
-                 <th scope="col">#<?php echo count($post->getPosts())?></th>
-                 <th scope="col">title</th>
-                 <th scope="col">image</th>
-                 <th scope="col">Categorey</th>
-                 <th scope="col">Description</th>
-                 <th scope="col">Edit</th>
-                 <th scope="col">Delete</th>
+                 <th class="text-center">#<?php echo count($post->getPosts())?></th>
+                 <th class="text-center">title</th>
+                 <th class="text-center">image</th>
+                 <th class="text-center">Categorey</th>
+                 <th class="text-center">Description</th>
+                 <th class="text-center">Edit</th>
+                 <th class="text-center">Delete</th>
               </tr> 
                 </thead>
                 <tbody>
@@ -118,7 +133,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                     <tr>
                         <td class="text-right"><?php echo $count?></td>
                         <td class="text-right"><?php echo $post['title'];?></td>
-                        <td class="text-right"><?php echo $post['image'];?></td>
+                        <td class="text-right w-25 h-25"><img class="w-25 h-25 rounded" src="../assets/images/<?= $post['image'];?>"></td>
                         <td class="text-right"><?php echo $post['nameCategory'];?></td>
                         <td class="text-right"><?php echo $post['description'];?></td>
                         <td><a href="../php/edit.post.php?edit=<?php echo $post['id_post']; ?>"><i class="fa fa-edit me-2"></i></a></td>
@@ -133,7 +148,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 
       </div>
 	<!-- add post form -->
-	<div class="modal fade" id="modal-task">
+	<!-- <div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="../scripts/crudAdmin.script.php" method="POST" id="form">
@@ -154,15 +169,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                                 <input type="file" class="form-control" id="images" name="image" >
                             </div>
 							
-                            <div class="mb-3">
-								<label class="form-label">Categorey</label>
-								<select class="form-select" name="category" >
-									<option value="">Please select</option>
-                                    <?php foreach($cat->getCategory() as $cat ):?>
-                                        <option value="<?php echo $cat['id']; ?>"><?php echo $cat['nameCategory'];?> </option>
-                                    <?php endforeach;?>
-								</select>
-							</div>
+                           
 
                             <div class="mb-0">
 								<label class="form-label">Description</label>
@@ -177,9 +184,13 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 				</form>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/dataTable.js"></script>
 </body>
 </html>

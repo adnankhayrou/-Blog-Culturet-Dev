@@ -1,12 +1,22 @@
 <?php
 // include '../classes/category.class.php';
 include '../classes/scripts.class.php';
+include '../classes/category.class.php';
 include '../scripts/crudAdmin.script.php';
 $title = 'Categorys';
 include 'navbar.php';
 
 if(!isset($_SESSION['name']))  header('location:login.php');
 
+if(isset($_GET['edit'])){
+  $cats= new category();
+  $result = $cats->getCategoryy($_GET['edit']);
+
+  if($result){
+      $id = $result['id_post'];
+      $name = $result['nameCategory'];
+  }
+}
 ?>
 
 <!-- NAVBAR  -->
@@ -55,12 +65,14 @@ if(!isset($_SESSION['name']))  header('location:login.php');
            
 <!-- ***********table of all categorys******************* -->
 <div class=" text-center table-responsive px-2" id="divTable">
-           <table class="table">
+           <!-- <table class="table"> -->
+           <table id="table" class="table table-striped" style="width:100%">
               <thead class="bg-dark text-light">
                <tr>
-                 <th scope="col">#<?php echo count($cat->getCategory())?></th>
-                 <th scope="col">Categoreys</th>
-                 <th scope="col">Delete</th>
+                 <th class="text-center">#<?php echo count($cat->getCategory())?></th>
+                 <th class="text-center">Categoreys</th>
+                 <th class="text-center">Edit</th>
+                 <th class="text-center">Delete</th>
               </tr> 
                 </thead>
                 <tbody>
@@ -71,6 +83,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
                     <tr>
                         <td class="text-right"><?php echo $count?></td>
                         <td class="text-right"><?php echo $cat['nameCategory'];?></td>
+                        <td><a href="#modal-cat" data-bs-toggle="modal"><i class="fa fa-edit me-2"></i></a></td>
                         <td><a href="../scripts/crudAdmin.script.php?deletecategory=<?php echo $cat['id']; ?>"><i class="fa fa-trash text-danger me-2"></i></a></td>
                     </tr>
                     
@@ -83,5 +96,40 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 
       </div>
 
-    
+      <!-- edit category form -->
+	<div class="modal fade" id="modal-cat">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="category.php" method="POST" id="form">
+					<div class="modal-header">
+						<h5 class="modal-title">Edit Category</h5>
+						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+					</div>
+					<div class="modal-body">
+			
+							<input type="hidden" name="id" >
+							<div class="mb-3">
+								<label class="form-label">Category</label>
+								<input type="text" name="category" class="col form-control" value=""/>
+							</div>
+
+						
+					</div>
+					<div class="modal-footer">
+						<a href="category.php" class="btn btn-white border"  id="cat-cancel-btn">Cancel</a>
+						<button type="submit" name="SaveCat" class="btn btn-dark text-light task-action-btn" id="cat-save-btn">Edit Category</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/dataTable.js"></script>
+</body>
+</html>
 

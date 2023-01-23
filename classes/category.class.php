@@ -26,6 +26,17 @@
             
         }
 
+        // public function getCategoryy($id){
+        //     $database = new Database();
+        //     $sql = "SELECT * FROM category WHERE id = ?";
+        //     $stmt = $database->connect()->prepare($sql);
+        //     $stmt->execute([$id]);
+        //     $dbcategory = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //     return $dbcategory;
+            
+        // }
+
 
         public function addCategory(){
         $database =new Database();
@@ -33,6 +44,15 @@
         $stmt= $database->connect()->prepare($sql);
 
         $stmt->execute([$this->name]);    
+        }
+
+        public function updatecategory($id){
+            $database = new Database();
+            $query="UPDATE posts SET nameCategory=?  WHERE id=?";
+            $result = $database->connect()->prepare($query);
+            $result->execute([$this->name, $id]);
+            if($result)
+                header('location:../php/category.php');
         }
 
 
