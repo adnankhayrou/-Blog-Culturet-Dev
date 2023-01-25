@@ -20,21 +20,21 @@ if(!isset($_SESSION['name']))  header('location:login.php');
             <!-- <input type="hidden" name="id" > -->
 							<div class="mb-3">
 								<label class="form-label">title</label>
-								<input id="title" type="text" name="title" class="form-control"/>
+								<input id="title" type="text" name="title[]" class="form-control"/>
                                 <small class="fw-bold"></small>
 
 							</div>
 
                             <div class="mb-3">
                                 <label for="image" class="col-form-label" id="image">image</label>
-                                <input type="file" class="form-control" id="images" name="image"/>
+                                <input type="file" class="form-control" id="images" name="image[]"/>
                                 <small class="fw-bold"></small>
                             </div>
 							
                             <div class="mb-3">
 								<label class="form-label">Categorey</label>
                                 <input type="hidden" value="<?php echo count($cat->getCategory())?>" id="optionLength">
-								<select id="select" class="form-select" name="category">
+								<select id="select" class="form-select" name="category[]">
 									<option value="">Please select</option>
                                     <?php foreach($cat->getCategory() as $cat ):?>
                                         <option value="<?php echo $cat['id']; ?>"><?php echo $cat['nameCategory'];?> </option>
@@ -45,7 +45,7 @@ if(!isset($_SESSION['name']))  header('location:login.php');
 
                             <div class="mb-2">
 								<label class="form-label">Description</label>
-								<textarea id="description" class="form-control" name="description" rows="4" placeholder="Article Body !!"></textarea>
+								<textarea id="description" class="form-control" name="description[]" rows="4" placeholder="Article Body !!"></textarea>
                                 <small class="fw-bold"></small>
 
 							</div>

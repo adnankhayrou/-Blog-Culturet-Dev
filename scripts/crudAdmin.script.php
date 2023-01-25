@@ -6,28 +6,44 @@ include_once '../classes/scripts.class.php';
 
 
 if(isset($_POST['SavePost'])){
+    // echo "<hr>" ;
+    // echo "<pre>" ;
+    // var_dump($_POST) ;
+    // echo "<pre>" ;
+    // echo "<hr>" ;
+    // foreach($_POST['title'] as $key => $value){
+    //     // echo "<pre>" ;
+    //         // echo "<hr>" ;
+    //         // echo   "title : ".$_POST['title'][$key] ;
+    //         // echo "<hr>" ;
+    //         // echo   "description :".$_POST['description'][$key] ;
+    //         // echo "<hr>" ;
 
-    $title=$_POST['title']; 
-    $image=$_POST['image'];
-    $ctegory=$_POST['category'];
-    $description=$_POST['description'];
+    //     // echo "<pre>" ;
+    // }
+    // die() ;  
+    // $title=$_POST['title']; 
+    // $image=$_POST['image'];
+    // $category=$_POST['category'];
+    // $description=$_POST['description'];
+    
 
     // echo "<pre>";
     // print_r($_POST);
     // echo "/<pre>";
-
-
+    // die ;
     $getPost = new post();
-    
-    $getPost->setTitle($title); 
-    $getPost->setImage($image); 
-    $getPost->setCategory($ctegory); 
-    $getPost->setDescription($description);
-
-    $getPost->addPost();
+    $getPost->addPost($_POST);
     header("Location:../php/dashboard.php");
+    
+    // $getPost->setTitle($title[$i]); 
+    // $getPost->setImage($image[$i]); 
+    // $getPost->setCategory($ctegory[$i]); 
+    // $getPost->setDescription($description[$i]);
 
-}
+    }
+    
+
  $post =new post();
 
 

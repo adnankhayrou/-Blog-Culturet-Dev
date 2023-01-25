@@ -5,7 +5,7 @@ include 'navbar.php';
 ?>
 
 
-<div class="col-12 col-lg-4 col-md-6 mx-auto mt-5 p-2" id="login">
+<div class="col-12 col-lg-4 col-md-6 mx-auto mt-5 p-2" id="loginn">
 <form action="../scripts/login.script.php" method="POST" id="form" class="formLogin " data-parsley-validate>
 <div class="modal-header row">
 						<h5 class="modal-title mt-5 fs-3 text-center">LOGIN</h5>

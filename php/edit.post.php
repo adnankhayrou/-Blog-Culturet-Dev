@@ -50,7 +50,8 @@ if(isset($_GET['edit'])){
                             </div>
 
                             <div class="mb-3">
-                                <label for="image" class="col-form-label" id="image">image</label>
+                                <img class="rounded" src="../assets/images/<?= $image;?>" width="100" height="60">
+                                <label for="image" class="col-form-label" id="image"></label>
                                 <input type="file" class="form-control" id="images" name="image" data-parsley-required/>
                                 <small class="fw-bold"></small>
                             </div>

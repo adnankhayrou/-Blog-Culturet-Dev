@@ -55,6 +55,7 @@
             $adminId = $_SESSION['id'];
             $database = new Database();
             $sql = "SELECT *, posts.id as id_post FROM posts INNER JOIN category ON category.id = posts.category_id WHERE posts.admin_id = $adminId  ORDER BY posts.id";
+            // "SELECT title, posts.id, nameCategory FROM posts INNER JOIN category ON category.id = posts.category_id";
             $stmt = $database->connect()->prepare($sql);
             $stmt->execute();
             $dbPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -96,13 +97,25 @@
             
         }
 
+        public function addPost($data){
+        $adminId = $_SESSION['id'] ;    
+        foreach($data["title"] as $key => $value){
+        // for($i = 0 ; $i < $data["title"] ; $i++){
+            $database =new Database();
 
-        public function addPost(){
-        $adminId = $_SESSION['id'];
-        $database =new Database();
-        $sql="INSERT INTO posts (title,image,description,category_id,admin_id)  VALUES (?,?,?,?,?)";
-        $stmt= $database->connect()->prepare($sql);
-        $stmt->execute([$this->getTitle(),$this->getImage(),$this->getDescription(),$this->getCategory(),$adminId]);    
+            $sql="INSERT INTO posts (title,image,description,category_id,admin_id)  VALUES (?,?,?,?,?)";
+            $stmt= $database->connect()->prepare($sql);
+            $stmt->execute([$data["title"][$key],$data["image"][$key],$data["description"][$key],$data["category"][$key],$adminId]);
+        }   
+        // echo "<pre>" ;
+                    //     echo "<hr>" ;
+            //     echo   "title : ".$_POST['title'][$key] ;
+            //     echo "<hr>" ;
+            //     echo   "description :".$_POST['description'][$key] ;
+            //     echo "<hr>" ;
+    
+            // echo "<pre>" ;     
+        // die() ;
         }
 
         public function updatepost($id){

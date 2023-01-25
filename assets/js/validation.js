@@ -38,8 +38,6 @@ btnLogin.addEventListener('click', (e)=>{
     }else{
         if (isValidEmail(email)) {
             showSuccess(email, "Email is good")
-        }else{
-            showEroor(email, "Email not valide !!")
         }
          
     }
